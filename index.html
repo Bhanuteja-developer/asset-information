@@ -1,0 +1,431 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PM REPORT (ASSET DETAILS)</title>
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<!-- Font Awesome for sign-out icon -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+:root {
+  --accent:#0b63a8;
+  --accent-dark:#084f85;
+  --muted:#6b7280;
+  --bg:#f3f6f9;
+  --card:#ffffff;
+  --border:#0b63a8;
+  --radius:12px;
+}
+
+*{box-sizing:border-box;}
+body{margin:0;font-family:"Inter",sans-serif;background:linear-gradient(180deg,#f7fbff 0%,var(--bg) 100%);color:#0b1b2b;}
+
+header{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:linear-gradient(90deg,var(--accent),var(--accent-dark));
+  padding:16px 24px;
+  color:#fff;
+  position:sticky;
+  top:0;
+  z-index:100;
+  box-shadow:0 6px 18px rgba(11,99,168,0.15);
+  gap:20px;
+}
+header .title{font-size:22px;font-weight:700;text-align:center;flex:1;}
+header .signout-btn{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  background:#fff;color:var(--accent);border:none;border-radius:6px;
+  padding:8px 16px;font-weight:700;cursor:pointer;
+  transition:all .3s ease;
+}
+header .signout-btn i{font-size:16px;}
+header .signout-btn:hover{
+  background:linear-gradient(90deg,var(--accent-dark),var(--accent));
+  color:#fff;box-shadow:0 0 12px rgba(11,99,168,0.6);transform:translateY(-2px);
+}
+
+.wrap{max-width:1180px;margin:28px auto;padding:0 18px 80px;}
+
+.card{
+  background:var(--card);
+  border-radius:var(--radius);
+  box-shadow:0 4px 10px rgba(0,0,0,0.08);
+  padding:20px;
+  margin-bottom:20px;
+  transition:transform .15s ease, box-shadow .3s ease;
+}
+.card:hover{
+  transform:translateY(-3px);
+  box-shadow:0 12px 24px rgba(0,0,0,0.15);
+}
+
+legend{
+  font-weight:700;
+  font-size:16px;
+  padding:6px 12px;
+  color:#fff;
+  border-radius:6px;
+  background:linear-gradient(90deg,var(--accent),var(--accent-dark));
+  margin-bottom:12px;
+  display:inline-block;
+}
+
+.form-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:12px;
+}
+label{display:block;font-size:12px;color:var(--muted);font-weight:700;margin-bottom:6px;}
+
+input[type="text"], input[type="date"], select, textarea, input[type="file"]{
+  width:100%;
+  padding:10px 14px;
+  border-radius:8px;
+  border:1px solid var(--border);
+  font-size:14px;
+  background:#fff;
+  color:#0b1b2b;
+  box-shadow:0 2px 6px rgba(11,99,168,0.15);
+  transition: all 0.4s ease;
+}
+
+input:focus, select:focus, textarea:focus{
+  outline:none;
+  border:1px solid transparent;
+  background-clip: padding-box;
+  position: relative;
+  box-shadow: 0 0 12px rgba(11,99,168,0.4);
+  border-radius:8px;
+}
+
+textarea{min-height:84px;resize:vertical;}
+.span-2{grid-column:1 / -1;}
+.card-footer{display:flex;justify-content:flex-end;margin-top:12px;gap:10px;}
+.btn{padding:9px 14px;border-radius:8px;border:none;font-weight:700;cursor:pointer;}
+.btn-primary{background:var(--accent);color:#fff;box-shadow:0 8px 26px rgba(11,99,168,0.08);}
+.btn-primary:hover{background:var(--accent-dark);transform:translateY(-2px);}
+.sigs{display:flex;gap:12px;margin-top:12px;flex-wrap:wrap;}
+.sig{flex:1;min-width:200px;border:1.5px dashed var(--border);border-radius:8px;padding:12px;background:linear-gradient(180deg,#fbfdff,#ffffff);text-align:center;font-weight:700;color:#223;min-height:74px;}
+.sig small{display:block;font-size:12px;font-weight:600;color:var(--muted);margin-top:8px;}
+.hidden{display:none !important;}
+
+@media print{
+  header,.btn{display:none !important;}
+  body{background:#fff;}
+  .card{box-shadow:none;border:none;}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="title">PM REPORT (ASSET DETAILS)</div>
+  <button class="signout-btn" onclick="window.location.href='login.html'">
+    <i class="fas fa-sign-out-alt"></i> Sign Out
+  </button>
+</header>
+
+<main class="wrap">
+
+  <!-- MONITOR DETAILS -->
+  <fieldset class="card" id="monitorSection">
+    <legend>MONITOR DETAILS</legend>
+    <div class="form-grid">
+      <div><label>MONITOR ASSET ID NO</label><input id="monAssetId" type="text"></div>
+      <div>
+        <label>MAKE</label>
+        <select id="monMake">
+          <option value="">--select--</option>
+          <option>DELL</option><option>HP</option><option>ACER</option><option>LENOVO</option><option>HCL</option>
+          <option>SAMSUNG</option><option>ZEBION</option><option>LG</option><option>VIEWSONIC</option>
+          <option>FRONTECH</option><option>WIPRO</option><option>ZEBRONICS</option><option>IBALL</option>
+          <option>CONSISTENT</option><option>ASUS</option><option>AOC</option><option>MSI</option><option>BENQ</option>
+          <option>PHILIPS</option><option>ENTER</option><option>GIGABYTE</option><option>VOLTRIQ</option><option>OTHER</option>
+        </select>
+      </div>
+      <div>
+        <label>INCHES</label>
+        <select id="monInches">
+          <option value="">--select--</option>
+          <option>17"</option>
+          <option>18"</option>
+          <option>18.5"</option>
+          <option>19"</option>
+          <option>20"</option>
+          <option>22"</option>
+          <option>22.5"</option>
+          <option>27"</option>
+          <option>OTHER</option>
+        </select>
+      </div>
+      <div><label>MODEL NO</label><input id="monModel" type="text"></div>
+      <div><label>SERIAL NUMBER</label><input id="monSerial" type="text"></div>
+    </div>
+    <div class="card-footer">
+      <button class="btn btn-primary" type="button" onclick="resetSection('monitorSection')">Reset</button>
+    </div>
+  </fieldset>
+
+  <!-- CPU DETAILS -->
+  <fieldset class="card" id="cpuSection">
+    <legend>CPU DETAILS</legend>
+    <div class="form-grid">
+      <div><label>CPU ASSET ID NO</label><input id="cpuAssetId" type="text"></div>
+      <div><label>MAKE</label><input id="cpuMake" type="text"></div>
+      <div><label>MODEL NO</label><input id="cpuModel" type="text"></div>
+      <div><label>SERIAL NUMBER</label><input id="cpuSerial" type="text"></div>
+      <div><label>PROCESSOR</label><input id="cpuProcessor" type="text"></div>
+      <div><label>MOTHERBOARD-MAKE</label><input id="cpuMbMake" type="text"></div>
+    </div>
+    <div class="card-footer">
+      <button class="btn btn-primary" type="button" onclick="resetSection('cpuSection')">Reset</button>
+    </div>
+  </fieldset>
+
+  <!-- SMPS DETAILS -->
+  <fieldset class="card" id="smpsSection">
+    <legend>SMPS DETAILS</legend>
+    <div class="form-grid">
+      <div>
+        <label>MAKE</label>
+        <select id="smpsMake">
+          <option value="">--select--</option>
+          <option>ZEBRONICS</option><option>IBALL</option><option>INTEX</option><option>HP</option>
+          <option>DELL</option><option>FRONTECH</option><option>LIVE TECH</option><option>ARTIS</option><option>OTHER</option>
+        </select>
+      </div>
+      <div><label>MODEL</label><input id="smpsModel" type="text"></div>
+      <div><label>SERIAL NUMBER</label><input id="smpsSerial" type="text"></div>
+    </div>
+    <div class="card-footer">
+      <button class="btn btn-primary" type="button" onclick="resetSection('smpsSection')">Reset</button>
+    </div>
+  </fieldset>
+
+  <!-- RAM DETAILS (UPDATED) -->
+  <fieldset class="card" id="ramSection">
+    <legend>RAM DETAILS</legend>
+    <div class="form-grid">
+      <div>
+        <label>MAKE</label>
+        <select id="ramMake">
+          <option value="">--select--</option>
+          <option>HYNEX</option><option>EVM</option><option>AARVEX</option><option>SAMSUNG</option><option>KINGSTON</option>
+          <option>ZEBRONICS</option><option>FRONTECH</option><option>IBALL</option><option>CONSISTENT</option>
+          <option>CRUCIAL</option><option>ADATA</option><option>OTHER</option>
+        </select>
+      </div>
+      
+      <div>
+        <label>CAPACITY</label>
+        <select id="ramCapacity">
+          <option value="">--select--</option>
+          <option>2 GB</option>
+          <option>4 GB</option>
+          <option>8 GB</option>
+          <option>16 GB</option>
+          <option>2 GB + 2 GB</option>
+          <option>4 GB + 4 GB</option>
+          <option>8 GB + 8 GB</option>
+          <option>16 GB + 16 GB</option>
+          <option>OTHER</option>
+        </select>
+      </div>
+
+      <div>
+        <label>MODEL NO</label>
+        <select id="ramModel">
+          <option value="">--select--</option>
+          <option>DDR-2</option>
+          <option>DDR-3</option>
+          <option>DDR-4</option>
+          <option>DDR-5</option>
+        </select>
+      </div>
+
+      <div><label>SERIAL NUMBER</label><input id="ramSerial" type="text"></div>
+    </div>
+    <div class="card-footer">
+      <button class="btn btn-primary" type="button" onclick="resetSection('ramSection')">Reset</button>
+    </div>
+  </fieldset>
+
+  <!-- HDD DETAILS (UPDATED) -->
+  <fieldset class="card" id="hddSection">
+    <legend>HDD DETAILS</legend>
+    <div class="form-grid">
+      <div>
+        <label>MAKE</label>
+        <select id="hddMake">
+          <option value="">--select--</option>
+          <option>SEAGATE</option><option>WESTERN DIGITAL (WD)</option><option>TOSHIBA</option><option>MAXTOR</option>
+          <option>CONSISTENT</option><option>FRONTECH</option><option>SAMSUNG</option><option>OTHER</option>
+        </select>
+      </div>
+      
+      <div>
+        <label>STORAGE CAPACITY</label>
+        <select id="hddStorage">
+          <option value="">--select--</option>
+          <option>160 GB</option>
+          <option>320 GB</option>
+          <option>500 GB</option>
+          <option>1 TB</option>
+          <option>OTHER</option>
+        </select>
+      </div>
+
+      <div><label>MODEL NO</label><input id="hddModel" type="text"></div>
+      <div><label>SERIAL NUMBER</label><input id="hddSerial" type="text"></div>
+    </div>
+    <div class="card-footer">
+      <button class="btn btn-primary" type="button" onclick="resetSection('hddSection')">Reset</button>
+    </div>
+  </fieldset>
+
+  <!-- KEYBOARD DETAILS -->
+  <fieldset class="card" id="keyboardSection">
+    <legend>KEYBOARD DETAILS</legend>
+    <div class="form-grid">
+      <div>
+        <label>MAKE</label>
+        <select id="kbMake">
+          <option value="">--select--</option>
+          <option>DELL</option><option>HP</option><option>LENOVO</option><option>TVS ELECTRONICS</option>
+          <option>ZEBRONICS</option><option>IBALL</option><option>PRODOT</option><option>FRONTECH</option>
+          <option>LOGITECH</option><option>AMKETTE</option><option>LAPCARE</option><option>OTHER</option>
+          <option>ENTER</option><option>QUANTUM</option><option>PORTRONICS</option><option>RAZER</option><option>MICROSOFT</option>
+          <option>ASUS</option><option>CORSAIR</option><option>OTHER</option>
+        </select>
+      </div>
+      <div><label>MODEL NO</label><input id="kbModel" type="text"></div>
+      <div><label>SERIAL NUMBER</label><input id="kbSerial" type="text"></div>
+    </div>
+    <div class="card-footer">
+      <button class="btn btn-primary" type="button" onclick="resetSection('keyboardSection')">Reset</button>
+    </div>
+  </fieldset>
+
+  <!-- MOUSE DETAILS -->
+  <fieldset class="card" id="mouseSection">
+    <legend>MOUSE DETAILS</legend>
+    <div class="form-grid">
+      <div>
+        <label>MAKE</label>
+        <select id="mouseMake">
+          <option value="">--select--</option>
+          <option>ZEBRONICS</option><option>FRONTECH</option><option>PORTRONICS</option><option>AMKETTE</option>
+          <option>TVS ELECTRONICS</option><option>IBALL</option><option>COSMIC BYTE</option><option>REDGEAR</option>
+          <option>LOGITECH</option><option>HP</option><option>DELL</option><option>LENOVO</option><option>RAZER</option>
+          <option>CORSAIR</option><option>ASUS</option><option>MICROSOFT</option><option>PRODOT</option><option>OTHER</option>
+        </select>
+      </div>
+      <div><label>MODEL NO</label><input id="mouseModel" type="text"></div>
+      <div><label>SERIAL NUMBER</label><input id="mouseSerial" type="text"></div>
+    </div>
+    <div class="card-footer">
+      <button class="btn btn-primary" type="button" onclick="resetSection('mouseSection')">Reset</button>
+    </div>
+  </fieldset>
+
+  <!-- PRINTER DETAILS -->
+  <fieldset class="card" id="printerSection">
+    <legend>PRINTER DETAILS</legend>
+    <div class="form-grid">
+      <div><label>PRINTER ASSET ID NO</label><input id="printerAssetId" type="text"></div>
+      <div>
+        <label>MAKE</label>
+        <select id="printerMake">
+          <option value="">--select--</option>
+          <option>CANON</option><option>HP</option><option>TVS ELECTRONICS</option><option>XEROX</option><option>EPSON</option>
+          <option>BROTHER</option><option>RICOH</option><option>SAMSUNG</option><option>WEWIN</option><option>LIPI</option>
+          <option>SIDSEL</option><option>ANDSONS</option><option>ORPHICARD</option><option>KYOCERA</option><option>LEXMARK</option><option>OTHER</option>
+        </select>
+      </div>
+      <div><label>MODEL NO</label><input id="printerModel" type="text"></div>
+      <div><label>SERIAL NUMBER</label><input id="printerSerial" type="text"></div>
+    </div>
+    <div class="card-footer">
+      <button class="btn btn-primary" type="button" onclick="resetSection('printerSection')">Reset</button>
+    </div>
+  </fieldset>
+
+  <!-- SCANNER DETAILS -->
+  <fieldset class="card" id="scannerSection">
+    <legend>SCANNER DETAILS</legend>
+    <div class="form-grid">
+      <div><label>SCANNER ASSET ID NO</label><input id="scannerAssetId" type="text"></div>
+      <div>
+        <label>MAKE</label>
+        <select id="scannerMake">
+          <option value="">--select--</option>
+          <option>CANON</option><option>BROTHER</option><option>HP</option><option>TVS ELECTRONICS</option><option>EPSON</option>
+          <option>LIPI</option><option>WEWIN</option><option>FUJITSU</option><option>PLUSTEK</option><option>KODAK ALARIS</option><option>OTHER</option>
+        </select>
+      </div>
+      <div><label>MODEL NO</label><input id="scannerModel" type="text"></div>
+      <div><label>SERIAL NUMBER</label><input id="scannerSerial" type="text"></div>
+    </div>
+    <div class="card-footer">
+      <button class="btn btn-primary" type="button" onclick="resetSection('scannerSection')">Reset</button>
+    </div>
+  </fieldset>
+
+  <!-- UPS DETAILS -->
+  <fieldset class="card" id="upsSection">
+    <legend>UPS DETAILS</legend>
+    <div class="form-grid">
+      <div><label>MAKE</label><input id="upsMake" type="text"></div>
+      <div><label>MODEL NO</label><input id="upsModel" type="text"></div>
+      <div><label>SERIAL NUMBER</label><input id="upsSerial" type="text"></div>
+    </div>
+    <div class="card-footer">
+      <button class="btn btn-primary" type="button" onclick="resetSection('upsSection')">Reset</button>
+    </div>
+  </fieldset>
+
+  <!-- USER REMARKS -->
+  <fieldset class="card" id="userRemarksSection">
+    <legend>USER REMARKS</legend>
+    <label>COMMENT</label>
+    <textarea id="userRemarks"></textarea>
+  </fieldset>
+
+  <!-- ENGINEER REMARKS -->
+  <fieldset class="card" id="engineerRemarksSection">
+    <legend>ENGINEER REMARKS</legend>
+    <label>COMMENT</label>
+    <textarea id="engineerRemarks"></textarea>
+  </fieldset>
+
+</main>
+
+<script>
+const $ = id => document.getElementById(id);
+
+function resetSection(sectionId) {
+  const sec = document.getElementById(sectionId);
+  if (!sec) return;
+
+  const elements = sec.querySelectorAll("input, select, textarea");
+  elements.forEach(el => {
+    if (el.type === "file") el.value = null;
+    else el.value = "";
+  });
+
+  sec.querySelectorAll("select").forEach(s => {
+    s.selectedIndex = 0;
+  });
+}
+</script>
+
+</body>
+</html>
